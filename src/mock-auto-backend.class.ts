@@ -171,7 +171,7 @@ export class MockAutoBackend<T> {
             if (template.hasOwnProperty(p)) {
 
                 let value = template[p];
-                if (isArray(value) && p.startsWith('$')) {
+                if (Array.isArray(value) && p.startsWith('$')) {
                     let arr: any[] = value;
                     arr.forEach(elem => {
                         if (!isArray(elem) && !isSimpleType(elem)) {
@@ -200,7 +200,7 @@ export class MockAutoBackend<T> {
                     continue;
                 }
 
-                if (isObject(value) || isArray(value)) {
+                if (isObject(value) || Array.isArray(value)) {
                     let joinedPath = path.concat(pName(p));
                     this.construct(value, cModel, joinedPath);
                     continue;
